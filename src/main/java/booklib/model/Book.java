@@ -31,4 +31,10 @@ public class Book {
 
     private boolean available;
 
+    public Book(String title, String author) {
+        this.title = title;
+        this.author = author;
+        this.available = true;
+    }
+
 }
