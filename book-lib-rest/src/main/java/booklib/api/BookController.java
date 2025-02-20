@@ -17,12 +17,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-
-
 @RestController
 @RequestMapping(path = "/api/books",
     produces = "application/json")
-@CrossOrigin(origins = "http://localhost:8080")    
+@CrossOrigin(origins = "http://localhost:3000")
 public class BookController {
     
     private BookRepository bookRepo;

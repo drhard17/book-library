@@ -1,0 +1,25 @@
+      version: '3.8'
+      services:
+        backend:
+          container_name: book-lib-rest
+          restart: unless-stopped
+          build:
+            context: ./book-lib-rest
+          ports:
+            - "8080:8080"
+          networks:
+            - book-lib-network
+
+        frontend:
+          container_name: book-lib-web
+          restart: unless-stopped
+          build:
+            context: ./book-lib-web
+          ports:
+            - "80:3000"
+          networks:
+            - book-lib-network
+
+      networks:
+        book-lib-network:
+          driver: bridge
