@@ -1,4 +1,5 @@
 import Dotenv from 'dotenv-webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 export default (env) => {
     
@@ -17,6 +18,11 @@ export default (env) => {
         plugins: [
             new Dotenv({
                 path: envPath
+            }),
+            
+            new HtmlWebpackPlugin({
+                template: "./public/index.html",
+                filename: "index.html"
             })
         ],
 
