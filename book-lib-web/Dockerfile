@@ -8,5 +8,5 @@
 FROM nginx:1.23-alpine
 COPY ./dist /usr/share/nginx/html
 # COPY --from=build /app/dist /usr/share/nginx/html
-EXPOSE 8088
+EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]

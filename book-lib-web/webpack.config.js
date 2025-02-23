@@ -1,10 +1,10 @@
 import Dotenv from 'dotenv-webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
 
 export default (env) => {
     
-    const isProduction = env === 'production';
-    const envPath = isProduction ? '.env.production' : '.env.development';
+    const envPath = env.production ? '.env.production' : '.env.development';
 
     return {
         entry: './src',
@@ -23,6 +23,18 @@ export default (env) => {
             new HtmlWebpackPlugin({
                 template: "./public/index.html",
                 filename: "index.html"
+            }),
+
+            new CopyPlugin({
+                patterns: [
+                    {
+                        from: 'public',
+                        to: '',
+                        globOptions: {
+                            ignore: ['**/index.html']
+                        }
+                    }
+                ]
             })
         ],
 
@@ -39,6 +51,10 @@ export default (env) => {
         devServer: {
             host: '127.0.0.1',
             port: 3000
+        },
+
+        output: {
+            clean: true
         }
     }
 }

@@ -15,6 +15,17 @@
             "runtimeExecutable": "npm",
             "runtimeArgs": ["run", "dev"],
             "console": "integratedTerminal"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Run building",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "runtimeExecutable": "npm",
+            "runtimeArgs": ["run", "build"],
+            "console": "integratedTerminal"
         }
     ]
 }
