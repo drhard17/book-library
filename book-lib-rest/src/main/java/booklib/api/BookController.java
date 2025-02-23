@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @RestController
 @RequestMapping(path = "/api/books",
     produces = "application/json")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {"http://localhost:3000", "http://147.45.166.30"})
 public class BookController {
     
     private BookRepository bookRepo;
@@ -49,7 +49,6 @@ public class BookController {
     }
 
     @DeleteMapping(path = "/{id}")
-    // @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity<String> deleteBook(@PathVariable Long id) {
         try {
             bookRepo.deleteById(id);
