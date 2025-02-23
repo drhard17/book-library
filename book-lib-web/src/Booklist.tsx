@@ -22,8 +22,10 @@ const BookList: React.FC = () => {
     fetchBooks();
   }, []);
 
-  if (loading) return <p>Загрузка...</p>;
-  console.log(books)
+  if (loading) {
+    return <p>Загрузка...</p>;
+  } 
+
   return (
     <div>
       <h2>Мои книги</h2>
