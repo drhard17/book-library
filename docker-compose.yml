@@ -16,7 +16,7 @@
           build:
             context: ./book-lib-web
           ports:
-            - "80:3000"
+            - "80:80"
           networks:
             - book-lib-network
 
