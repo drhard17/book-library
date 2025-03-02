@@ -1,5 +1,7 @@
 package booklib.model;
 
+import org.springframework.transaction.annotation.Transactional;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,6 +13,7 @@ import lombok.Data;
 
 @Data
 @Entity
+@Transactional
 public class Client {
 
     @Id
@@ -18,8 +21,15 @@ public class Client {
     private long id;
     
     @NotNull
+    @Column(unique = true)
     @Size(min = 3, message = "Name must be at least 3 characters long")
-    private String name;
+    private String username;
+
+    @NotNull
+    private String password;
+    
+    @NotNull
+    private String role = "ROLE_CLIENT";
 
     @NotNull
     @Email
