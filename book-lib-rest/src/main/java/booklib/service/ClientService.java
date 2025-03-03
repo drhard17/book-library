@@ -1,8 +1,6 @@
 package booklib.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import booklib.data.ClientRepository;
@@ -26,14 +24,5 @@ public class ClientService {
         client.setRole(role);
         clientRepository.save(client);
     }
-
-    // public Client getByUserName(String username) {
-    //     return clientRepository.findByUsername(username)
-    //             .orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден: " + username));
-    // }
-
-    // public UserDetailsService userDetailsService() {
-    //     return this::getByUserName;
-    // }
 
 }

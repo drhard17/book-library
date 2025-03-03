@@ -9,7 +9,7 @@ import booklib.data.ClientRepository;
 import booklib.model.Client;
 
 @Service
-public class ClientDetailService implements UserDetailsService {
+public class UserDetailServiceImpl implements UserDetailsService {
 
     @Autowired
     private ClientRepository clientRepository;
