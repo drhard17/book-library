@@ -18,6 +18,6 @@ public class ClientDetailService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Client client = clientRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username ));
-        return new ClientDetails(client);
+        return client;
     }
 }
