@@ -10,8 +10,18 @@ const BookList: React.FC = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await axios.get(process.env.API_BASE_URL + '/api/books');
-        setBooks(response.data);
+        const response = await axios.get(process.env.API_BASE_URL + '/api/books',
+            { withCredentials: true }
+        );
+
+        if (Array.isArray(response.data)) {
+          setBooks(response.data);
+        } else {
+        //   window.location.href = process.env.API_BASE_URL + '/login';
+          const currentUrl = window.location.href;
+          window.location.href = 
+          `${process.env.API_BASE_URL}/login?redirect_url=${encodeURIComponent(currentUrl)}`;
+        }
       } catch (error) {
         console.error('Ошибка при загрузке данных:', error);
       } finally {

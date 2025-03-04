@@ -15,14 +15,27 @@ public class ClientService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public void createClient(String username, String password, String email, String role) {
+    public Client createClient(String username, String password, String email, String role) {
         
-        Client client = new Client();
-        client.setUsername(username);
-        client.setPassword(passwordEncoder.encode(password));
-        client.setEmail(email);
-        client.setRole(role);
+        Client client = Client.builder()
+                .username(username)
+                .password(passwordEncoder.encode(password))
+                .email(email)
+                .role(role)
+                .build();
+
         clientRepository.save(client);
+
+        return client;
+    }
+
+    public void loginUser(String username, String password) {
+        Client user = clientRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        if (!passwordEncoder.matches(password, user.getPassword())) {
+            throw new RuntimeException("Invalid password");
+        }
     }
 
 }

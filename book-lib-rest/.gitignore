@@ -34,3 +34,5 @@ build/
 
 ### secrets ###
 src/main/resources/application-db-creds.properties
+
+src/main/resources/application-front.properties
