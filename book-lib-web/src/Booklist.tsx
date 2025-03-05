@@ -38,7 +38,7 @@ const BookList: React.FC = () => {
 
   return (
     <div>
-      <h2>Мои книги</h2>
+      <h2>Книги</h2>
       <ul>
         {books.map((book) => (
           <li key={book.id}>
